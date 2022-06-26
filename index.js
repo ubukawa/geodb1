@@ -16,7 +16,7 @@ const tippecanoe = spawn(tippecanoePath, [
     `--maximum-zoom=${maxzoom}`
   ], { stdio: ['pipe', 'inherit', 'inherit'] })
 
-//const downstream = process.s
+//const downstream = process.stdout
 const downstream = tippecanoe.stdin
 
 for (const src of srcs) {
@@ -29,8 +29,8 @@ for (const src of srcs) {
         }
         delete f.properties.SHAPE_Length //SHAPE_Length is not necessary
         //console.log(JSON.stringify(f, null, 2))
-        //downstream.write(`\x1e${JSON.stringify(f)}\n`)
-        downstream.write(`\x1e${JSON.stringify(f.properties)}\n`)
+        downstream.write(`\x1e${JSON.stringify(f)}\n`)
+        //downstream.write(`\x1e${JSON.stringify(f.properties)}\n`)
       })
     const ogr2ogr = spawn(ogr2ogrPath, [
       '-f', 'GeoJSONSeq',
