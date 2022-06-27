@@ -19,10 +19,7 @@ const tippecanoe = spawn(tippecanoePath, [
 //const downstream = process.stdout
 const downstream = tippecanoe.stdin
 
-let nOpenFiles = 0
-
 for (const src of srcs) {
-    nOpenFiles++
     const parser = new Parser()
       .on('data', f => {
         f.tippecanoe = {
@@ -34,12 +31,6 @@ for (const src of srcs) {
         //console.log(JSON.stringify(f, null, 2))
         downstream.write(`\x1e${JSON.stringify(f)}\n`)
         //downstream.write(`\x1e${JSON.stringify(f.properties)}\n`)
-      })
-      .on('finish', () =>{
-        nOpenFiles--
-        if (nOpenFiles === 0){
-            downstream.end()
-        }
       })
     const ogr2ogr = spawn(ogr2ogrPath, [
       '-f', 'GeoJSONSeq',
