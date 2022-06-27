@@ -6,7 +6,7 @@
         url: test_area.gdb
         layer: elev
         minzoom: 10
-        maxzoom: 11
+        maxzoom: 12
         }
     ]
     ogr2ogrPath: ogr2ogr
