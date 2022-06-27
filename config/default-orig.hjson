@@ -3,13 +3,13 @@
     maxzoom: 12
     srcs: [
         {
-        url: https://geoportal.un.org/arcgis/sharing/rest/content/items/3b628266c28345ecbcac152255eba4be/data
+        url: test_area.gdb
         layer: elev
         minzoom: 10
         maxzoom: 12
         }
     ]
     ogr2ogrPath: ogr2ogr
-    tippecanoePath: /usr/local/bin/tippecanoe
+    tippecanoePath: tippecanoe
     dstDir: zxy
 }
